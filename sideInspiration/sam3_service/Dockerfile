@@ -1,7 +1,7 @@
 # SAM 3 image PCS microservice (GPU).
 # Meta ships no official image — this wraps facebookresearch/sam3 for HTTP.
 # Context7 checked: /facebookresearch/sam3 — build_sam3_image_model + Sam3Processor.
-FROM pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime
+FROM pytorch/pytorch:2.11.0-cuda12.8-cudnn9-runtime@sha256:eee11b3b3872a8c838e35ef48f08b2d5def2080902c7f666831310ca1a0ef2be
 
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
