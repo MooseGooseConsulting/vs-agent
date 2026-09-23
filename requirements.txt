@@ -4,7 +4,7 @@
 langgraph>=1.2.9,<2
 langgraph-checkpoint-sqlite>=3.1.0,<4
 jsonschema>=4.26,<5
-openai-codex==0.144.4
+openai-codex==0.155.1
 # Perception
 ultralytics>=8.2        # YOLOv8 detector (forked weights provisioned separately)
 opencv-python>=4.9

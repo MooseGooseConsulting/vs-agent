@@ -3,7 +3,9 @@
 ## Current decision
 
 LangGraph is the agent runtime. The active model path uses the official
-`openai-codex==0.144.4` Python SDK and its managed `codex app-server` process.
+`openai-codex==0.155.1` Python SDK and its managed `codex app-server` process.
+The July 2026 task report recorded app-server smoke against 0.144.4. A fresh
+managed app-server smoke for 0.155.1 has not been recorded.
 The app-server uses the existing ChatGPT-managed login. This path does **not**
 use an OpenAI API key, OpenAI HTTP API, Responses API, Chat Completions API,
 OpenRouter API, DeepSeek API, or an OpenAI-compatible endpoint.
