@@ -6,13 +6,13 @@
 
 **Architecture:** A deterministic parent `StateGraph` routes separately compiled leader and follower child graphs. One process-lifetime `AsyncCodex` client owns app-server and OAuth; each role reuses its own Codex thread. Deterministic game tools validate proposals and remain the only input writers.
 
-**Tech Stack:** Python 3.13, LangGraph 1.2.9, `openai-codex==0.144.4`, Codex app-server, ChatGPT managed OAuth, SQLite checkpoints, existing controller/perception stack.
+**Tech Stack:** Python 3.13, LangGraph 1.2.9, `openai-codex==0.155.1`, Codex app-server, ChatGPT managed OAuth, SQLite checkpoints, existing controller/perception stack.
 
 ## Global Constraints
 
 - Never read, copy, log, export, or commit OAuth token material.
 - Never use an API key or direct OpenAI HTTP client for this runtime.
-- Use the official `openai-codex==0.144.4` SDK with its pinned CLI runtime by default.
+- Use the official `openai-codex==0.155.1` SDK with its pinned CLI runtime by default.
 - Keep one `AsyncCodex` instance alive for the runtime process and close it deterministically.
 - Leader and follower must be separately compiled LangGraph child graphs with narrow state schemas.
 - Codex children get no game tools; `SpineGameTools` and `Controller` remain the sole input boundary.
@@ -36,7 +36,7 @@
 - [ ] **Step 1: Add failing lifecycle and auth tests** proving one SDK client is entered once, account metadata must report ChatGPT-managed auth, role threads are started/resumed, images use `LocalImageInput`, invalid JSON is rejected, and close exits the SDK once.
 - [ ] **Step 2: Run** `.venv\Scripts\python.exe -m unittest tests.test_codex_sdk_client -v` and verify failure is caused by the missing module.
 - [ ] **Step 3: Implement the minimal async client** with dependency-injected SDK factories. Configure read-only sandbox, deny-all approval, disabled web search, and disabled native shell. Parse and validate `final_response`; do not expose authentication material.
-- [ ] **Step 4: Add `openai-codex==0.144.4`** to `requirements.txt`, install it, and run `pip check`.
+- [ ] **Step 4: Add `openai-codex==0.155.1`** to `requirements.txt`, install it, and run `pip check`.
 - [ ] **Step 5: Run the focused tests** and commit `feat: add official Codex SDK OAuth client`.
 
 ### Task 2: Real LangGraph leader and follower subgraphs

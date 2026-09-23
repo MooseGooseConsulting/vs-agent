@@ -9,11 +9,12 @@ Codex-managed ChatGPT login. Repository code never reads or owns OAuth tokens.
 
 ## Corrected boundaries
 
-- `openai-codex==0.144.4` owns one process-lifetime `codex app-server` client,
+- `openai-codex==0.155.1` owns one process-lifetime `codex app-server` client,
   authentication state, token refresh, Codex threads, turns, images, and
   schema-constrained output.
-- The SDK's pinned Codex CLI runtime is the supported default. The separately
-  installed `codex-cli 0.145.0` is not selected implicitly.
+- The SDK's pinned Codex CLI runtime is the supported default. Installing
+  0.155.1 also installs `openai-codex-cli-bin==0.155.1`. A separately installed
+  older CLI is not selected implicitly.
 - A parent `StateGraph` owns preparation, screen routing, checkpointing,
   retries, evaluation, and all side-effect boundaries.
 - Leader and follower are separately compiled child `StateGraph` instances,
